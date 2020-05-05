@@ -1,0 +1,10 @@
+// Pesquisando a quantidade de requisições HTTP por cidade
+
+// Projeto utilizado:
+// https://github.com/renatogroffe/ASPNETCore3.1_Docker-AppInsights
+
+// Esta query faz uso de KQL (Kusto query language)
+
+requests
+| summarize totalCount=sum(itemCount) by client_City
+| render piechart

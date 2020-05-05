@@ -1,0 +1,11 @@
+// Pesquisando os acessos a dados (dependências) de uma requisição HTTP
+
+// Projeto utilizado:
+// https://github.com/renatogroffe/ASPNETCore3.1_AppInsights
+
+// Esta query faz uso de KQL (Kusto query language)
+
+dependencies 
+| limit 1000 
+| where operation_Name == "GET Bolsas/Get" and duration > 150 
+| project operation_Name, timestamp, data, duration 
